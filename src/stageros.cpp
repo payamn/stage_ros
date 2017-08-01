@@ -595,13 +595,13 @@ StageNode::WorldCallback()
 
         robotmodel->odom_pub.publish(odom_msg);
 
-        // broadcast odometry transform
-        tf::Quaternion odomQ;
-        tf::quaternionMsgToTF(odom_msg.pose.pose.orientation, odomQ);
-        tf::Transform txOdom(odomQ, tf::Point(odom_msg.pose.pose.position.x, odom_msg.pose.pose.position.y, 0.0));
-        tf.sendTransform(tf::StampedTransform(txOdom, sim_time,
-                                              mapName("odom", r, static_cast<Stg::Model*>(robotmodel->positionmodel)),
-                                              mapName("base_footprint", r, static_cast<Stg::Model*>(robotmodel->positionmodel))));
+        // // broadcast odometry transform
+        // tf::Quaternion odomQ;
+        // tf::quaternionMsgToTF(odom_msg.pose.pose.orientation, odomQ);
+        // tf::Transform txOdom(odomQ, tf::Point(odom_msg.pose.pose.position.x, odom_msg.pose.pose.position.y, 0.0));
+        // tf.sendTransform(tf::StampedTransform(txOdom, sim_time,
+        //                                       mapName("odom", r, static_cast<Stg::Model*>(robotmodel->positionmodel)),
+        //                                       mapName("base_footprint", r, static_cast<Stg::Model*>(robotmodel->positionmodel))));
 
         // Also publish the ground truth pose and velocity
         Stg::Pose gpose = robotmodel->positionmodel->GetGlobalPose();
